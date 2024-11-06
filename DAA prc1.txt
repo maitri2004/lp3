@@ -1,0 +1,44 @@
+# Non Recursive program ###################################
+
+def fibonacci(n): 
+    if n <= 0:  # Handling edge case when n <= 0
+        print("Please enter a positive integer.")
+    elif n == 1:  # For the first Fibonacci number
+        print(0)
+    elif n == 2:  # For the second Fibonacci number
+        print(1)
+    else:
+        fnm2 = 0  # (n-2)th Fibonacci number
+        fnm1 = 1  # (n-1)th Fibonacci number
+        for i in range(2, n):
+            fn = fnm1 + fnm2  # Calculate nth Fibonacci number
+            fnm2 = fnm1
+            fnm1 = fn
+        print(fn)
+
+# Taking input from the user
+try:
+    user_input = int(input("Enter the position of the Fibonacci number you want to find: "))
+    fibonacci(user_input)
+except ValueError:
+    print("Invalid input. Please enter an integer.")
+
+
+# Recursive program ###################################
+
+def fibonacci(n):
+    if n <= 0:
+        return "Enter a positive number."
+    elif n == 1:
+        return 0
+    elif n == 2:
+        return 1
+    else:
+        return fibonacci(n - 1) + fibonacci(n - 2)
+
+# Taking input from the user
+try:
+    n = int(input("Enter a positive integer to find its Fibonacci number: "))
+    print(f"Fibonacci number at position {n} is: {fibonacci(n)}")
+except ValueError:
+    print("Please enter a valid integer.")

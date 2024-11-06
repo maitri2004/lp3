@@ -1,0 +1,40 @@
+5. Write a program for Quick Sort.
+
+# Function to perform quicksort
+def quicksort(arr):
+    # Base case: If the array has 0 or 1 element, it's already sorted
+    if len(arr) <= 1:
+        return arr
+    
+    # Choose the pivot as the middle element
+    pivot = arr[len(arr) // 2]
+    
+    # Initialize empty lists for elements smaller, equal, and larger than the pivot
+    left = []
+    middle = []
+    right = []
+    
+    # Divide elements based on comparison with the pivot
+    for x in arr:
+        if x < pivot:
+            left.append(x)     # Elements smaller than pivot go to 'left'
+        elif x == pivot:
+            middle.append(x)   # Elements equal to pivot go to 'middle'
+        else:
+            right.append(x)    # Elements greater than pivot go to 'right'
+    
+    # Recursively apply quicksort to 'left' and 'right', then combine results
+    sorted_left = quicksort(left)
+    sorted_right = quicksort(right)
+    return sorted_left + middle + sorted_right
+
+# Taking input from the user
+user_input = input("Enter numbers separated by spaces: ")
+arr = []  # Initialize an empty array to hold user input numbers
+
+# Convert input string to a list of integers
+for num in user_input.split():
+    arr.append(int(num))
+
+# Call quicksort and display the sorted array
+print("Sorted array:", quicksort(arr))
